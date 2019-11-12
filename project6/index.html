@@ -11,75 +11,75 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>React Local</title>
   <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
-  <script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+  <script type="application/javascript"
+    src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
   <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 
   <!-- your custom CSS goes here: -->
   <style>
+    heading {
+      font-size: 30px;
+      padding: 16px 0;
+      color: #444;
+      text-align: center;
+    }
 
-  heading {
-  	font-size: 30px;
-  	padding: 16px 0;
-  	color: #444;
-  	text-align: center;
-  }
+    .container {
+      margin: 36px auto;
+      width: 100%;
+      max-width: 800px;
+    }
 
-  .container {
-  	margin: 36px auto;
-  	width: 100%;
-  	max-width: 800px;
-  }
+    .search-label {
+      position: relative;
+    }
 
-  .search-label {
-  	position: relative;
-  }
+    .container input {
+      width: 100%;
+      padding: 16px;
+      font-size: 36px;
+      font-style: italic;
+      color: #444;
+      box-sizing: border-box;
+      outline: none;
+    }
 
-  .container input {
-  	width: 100%;
-  	padding: 16px;
-  	font-size: 36px;
-  	font-style: italic;
-  	color: #444;
-  	box-sizing: border-box;
-  	outline: none;
-  }
+    .search-icon {
+      position: absolute;
+      top: -10px;
+      font-size: 24px;
+      color: #555;
+      right: 18px;
+    }
 
-  .search-icon {
-  	position: absolute;
-  	top: -10px;
-  	font-size: 24px;
-  	color: #555;
-  	right: 18px;
-  }
+    .single-result {
+      margin-top: 10px;
+    }
 
-  .single-result {
-    margin-top: 10px;
-  }
+    .result-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-  .result-title{
-    font-weight: bold;
-    font-size: 16px;
-  }
+    .result-url {
+      font-size: 12px;
+    }
 
-  .result-url{
-    font-size: 12px;
-  }
+    .page-display {
+      float: right;
+    }
 
-  .page-display{
-    float: right;
-  }
+    input.button {
+      size: 30px;
+    }
 
-  input.button{
-    size: 30px;
-  }
-
-  .checkbox{
-    float:right;
-  }
+    .checkbox {
+      float: right;
+    }
   </style>
 
-<!-- Maybe you want to use bootstrap to make it pretty? -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Maybe you want to use bootstrap to make it pretty? -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
@@ -87,58 +87,65 @@
 <body>
   <div id="root"></div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <script type="text/babel">
-  // Obtain the root
-  const rootElement = document.getElementById('root')
+    // Obtain the root
+    const rootElement = document.getElementById('root')
 
-  class SearchApp extends React.Component { // gonna try to modify this tutorial: https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756
+    class SearchApp extends React.Component { // gonna try to modify this tutorial: https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756
 
-    constructor(props){
+      constructor(props) {
 
-      super(props);
+        super(props);
 
-      this.state = {
-        query: '',
-        loading: false,
-        message: '',
-        results: {},
-        offset: 0,
-        total_results: 0,
-        language_filter: '',
-        date_on: false,
-        month: '01',
-        day: '01',
-        year: '2009',
-      };
+        this.state = {
+          query: '',
+          loading: false,
+          message: '',
+          results: {},
+          offset: 0,
+          total_results: 0,
+          language_filter: '',
+          date_on: false,
+          month: '01',
+          day: '01',
+          year: '2009',
+        };
 
-      this.cancel = '';
+        this.cancel = '';
 
-    }
+      }
 
-    handleOnInputChange(event){
-      const query = event.target.value;
-      const { offset } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+      handleOnInputChange(event) {
+        const query = event.target.value;
+        const { offset } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
-      if(!query) { //console.log("woo");
-        this.setState({ query:'', results:{}, message: ''}); }
-      else { this.setState({ query, loading: true, message: '' }, () => { this.fetchSearchResults(0, query, language_filter, date_on, month, day, year); }); }
-    }
+        if (!query) { //console.log("woo");
+          this.setState({ query: '', results: {}, message: '' });
+        }
+        else { this.setState({ query, loading: true, message: '' }, () => { this.fetchSearchResults(0, query, language_filter, date_on, month, day, year); }); }
+      }
 
 
-    fetchSearchResults(updatedOffset, query, filter, dateOn, Month, Day, Year){
+      fetchSearchResults(updatedOffset, query, filter, dateOn, Month, Day, Year) {
         const offset = updatedOffset ? `&offset=${updatedOffset}` : '';
         var fullsearch = `http://ssa-hw2-backend.stevetarzia.com/api/search?query=${query}${offset}`;
-        if (query){
+        if (query) {
           fullsearch = `http://ssa-hw2-backend.stevetarzia.com/api/search?query=${query}${offset}${filter}`;
-          if(dateOn){
+          if (dateOn) {
             var date_string = '&date=' + Year + '-' + Month + '-' + Day;
             fullsearch = `http://ssa-hw2-backend.stevetarzia.com/api/search?query=${query}${offset}${filter}${date_string}`;
           }
@@ -146,33 +153,34 @@
         //console.log(fullsearch);
 
         fetch(fullsearch)
-        .then((res) => res.json())
-        .then((data) => { if(query){
-                            var isResult = !(data.returned_results) ? 'No results found.' : '';
-                          }
-                          else {
-                            var isResult = '';
-                          }
-                          const totalResults = data.total_results;
-                          this.setState({ results: data.articles, message: isResult, loading: false, offset: updatedOffset, total_results: totalResults, language_filter: filter, date_on: dateOn, month: Month, day: Day, year: Year,});
-                        });
-    }
+          .then((res) => res.json())
+          .then((data) => {
+            if (query) {
+              var isResult = !(data.returned_results) ? 'No results found.' : '';
+            }
+            else {
+              var isResult = '';
+            }
+            const totalResults = data.total_results;
+            this.setState({ results: data.articles, message: isResult, loading: false, offset: updatedOffset, total_results: totalResults, language_filter: filter, date_on: dateOn, month: Month, day: Day, year: Year, });
+          });
+      }
 
-    renderSearchResults(){
-      const { results } = this.state;
-      const { query } = this.state;
-      if(Object.keys(results).length){
-        return (
-          <div className="results-container">
-            { results.map((result) => {
+      renderSearchResults() {
+        const { results } = this.state;
+        const { query } = this.state;
+        if (Object.keys(results).length) {
+          return (
+            <div className="results-container">
+              {results.map((result) => {
 
                 var query_words = query.split(" ");   // need to figure out regex for this, but after that I'm done... hooray
-                var truncated_txt = (result.txt).split(/(?=[.\s]|\b)/).splice(0,400);
+                var truncated_txt = (result.txt).split(/(?=[.\s]|\b)/).splice(0, 400);
                 //console.log(truncated_txt);
-                for(var i = 0; i < query_words.length; i++){
-                  for(var j = 0; j < truncated_txt.length; j++){
-                    if(query_words[i].toLowerCase().valueOf() == truncated_txt[j].toLowerCase().valueOf()){
-                      truncated_txt[j] = truncated_txt[j].replace(truncated_txt[j], "<mark>"+truncated_txt[j]+"</mark>");
+                for (var i = 0; i < query_words.length; i++) {
+                  for (var j = 0; j < truncated_txt.length; j++) {
+                    if (query_words[i].toLowerCase().valueOf() == truncated_txt[j].toLowerCase().valueOf()) {
+                      truncated_txt[j] = truncated_txt[j].replace(truncated_txt[j], "<mark>" + truncated_txt[j] + "</mark>");
                     }
                   }
                 }
@@ -180,238 +188,238 @@
                 truncated_txt = truncated_txt.join("") + "...";
 
                 return (<div className="single-result">
-                          <div className="result-title">{result.title}</div>
-                          <div className="result-url"><a href={result.url}>{result.url}</a></div>
-                          <div className="result-text"><div dangerouslySetInnerHTML={{ __html: truncated_txt }} /></div>
-                        </div>)
-                      })
-                    }
-          </div>)
-      }
-    }
-
-    changePage(dir){
-
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { results } = this.state;
-      const { total_results } = this.state;
-      const { language_filter } = this.state;
-      const { date_on }  = this.state;
-      const { day } = this.state;
-      const { month } = this.state;
-      const { year } = this.state;
-
-      var directionChange = dir ? 1 : -1;
-      directionChange = ((offset/10) + directionChange < 0) ? 0 : directionChange;
-
-      var upperBound = Math.ceil(total_results / 10);
-
-      directionChange = ((offset/10) + directionChange > upperBound-1) ? 0 : directionChange;
-
-      this.fetchSearchResults(offset+(10*directionChange), query, language_filter, date_on, month, day, year);
-
-    }
-
-    changeFilter(){
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
-
-      if(!language_filter){
-        this.fetchSearchResults(offset, query, '&language=en', date_on, month, day, year);
-      }
-      else{
-        this.fetchSearchResults(offset, query, '', date_on, month, day, year);
+                  <div className="result-title">{result.title}</div>
+                  <div className="result-url"><a href={result.url}>{result.url}</a></div>
+                  <div className="result-text"><div dangerouslySetInnerHTML={{ __html: truncated_txt }} /></div>
+                </div>)
+              })
+              }
+            </div>)
+        }
       }
 
+      changePage(dir) {
 
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { results } = this.state;
+        const { total_results } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { day } = this.state;
+        const { month } = this.state;
+        const { year } = this.state;
 
-    }
+        var directionChange = dir ? 1 : -1;
+        directionChange = ((offset / 10) + directionChange < 0) ? 0 : directionChange;
 
-    swapDateState(){
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+        var upperBound = Math.ceil(total_results / 10);
 
-      if(date_on){
-        this.fetchSearchResults(offset, query, language_filter, false, month, day, year);
+        directionChange = ((offset / 10) + directionChange > upperBound - 1) ? 0 : directionChange;
+
+        this.fetchSearchResults(offset + (10 * directionChange), query, language_filter, date_on, month, day, year);
+
       }
-      else{
-        this.fetchSearchResults(offset, query, language_filter, true, month, day, year);
+
+      changeFilter() {
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
+
+        if (!language_filter) {
+          this.fetchSearchResults(offset, query, '&language=en', date_on, month, day, year);
+        }
+        else {
+          this.fetchSearchResults(offset, query, '', date_on, month, day, year);
+        }
+
+
+
       }
 
-    }
+      swapDateState() {
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
-    getMonth(){
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+        if (date_on) {
+          this.fetchSearchResults(offset, query, language_filter, false, month, day, year);
+        }
+        else {
+          this.fetchSearchResults(offset, query, language_filter, true, month, day, year);
+        }
 
-      var value = document.getElementById("month_start").value;
+      }
 
-      this.fetchSearchResults(offset, query, language_filter, date_on, value, day, year)
+      getMonth() {
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
-    }
+        var value = document.getElementById("month_start").value;
 
-    getYear(){
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+        this.fetchSearchResults(offset, query, language_filter, date_on, value, day, year)
 
-      var value = document.getElementById("year_start").value;
+      }
 
-      this.fetchSearchResults(offset, query, language_filter, date_on, month, day, value);
+      getYear() {
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
-    }
+        var value = document.getElementById("year_start").value;
 
-    getDay(){
-      const { offset } = this.state;
-      const { query } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+        this.fetchSearchResults(offset, query, language_filter, date_on, month, day, value);
 
-      var value = document.getElementById("day_start").value;
+      }
 
-      this.fetchSearchResults(offset, query, language_filter, date_on, month, value, year);
+      getDay() {
+        const { offset } = this.state;
+        const { query } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
-    }
+        var value = document.getElementById("day_start").value;
 
-    render() {
+        this.fetchSearchResults(offset, query, language_filter, date_on, month, value, year);
 
-      const { query } = this.state;
-      const { message } = this.state;
-      const { results } = this.state;
-      const { offset } = this.state;
-      const { total_results } = this.state;
-      const { language_filter } = this.state;
-      const { date_on } = this.state;
-      const { month } = this.state;
-      const { day } = this.state;
-      const { year } = this.state;
+      }
+
+      render() {
+
+        const { query } = this.state;
+        const { message } = this.state;
+        const { results } = this.state;
+        const { offset } = this.state;
+        const { total_results } = this.state;
+        const { language_filter } = this.state;
+        const { date_on } = this.state;
+        const { month } = this.state;
+        const { day } = this.state;
+        const { year } = this.state;
 
 
-      return (
-        <div className="container">
-          <h2 classname="heading">News Search App</h2>
-          <button class="direction-button" onClick={() => this.changePage(0)}> Previous 10 Results </button>
-          <button class="direction-button" onClick={() => this.changePage(1)}> Next 10 Results </button>
-          <div class="page-display">
-            Page: {(offset / 10) + 1}
-          </div>
-          <div class="search-options-container">
-            <br />
-
-  <select id="month_start"
-          name="month_start" onChange={() => this.getMonth()}>
-    <option value="01">January</option>
-    <option value="02">February</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-  </select>
-  <select id="day_start"
-          name="day_start" onChange={() => this.getDay()}>
-    <option value="01">1</option>
-    <option value="02">2</option>
-    <option value="03">3</option>
-    <option value="04">4</option>
-    <option value="05">5</option>
-    <option value="06">6</option>
-    <option value="07">7</option>
-    <option value="08">8</option>
-    <option value="09">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-    <option value="21">21</option>
-    <option value="22">22</option>
-    <option value="23">23</option>
-    <option value="24">24</option>
-    <option value="25">25</option>
-    <option value="26">26</option>
-    <option value="27">27</option>
-    <option value="28">28</option>
-    <option value="29">29</option>
-    <option value="30">30</option>
-    <option value="31">31</option>
-  </select>
-  <select id="year_start"
-         name="year_start" onChange={() => this.getYear()}>
-    <option value="2009">2009</option>
-    <option value="2010">2010</option>
-    <option value="2011">2011</option>
-    <option value="2012">2012</option>
-    <option value="2013">2013</option>
-    <option value="2014">2014</option>
-    <option value="2015">2015</option>
-    <option value="2016">2016</option>
-    <option value="2017">2017</option>
-    <option value="2018">2018</option>
-    <option value="2019">2019</option>
-  </select>
-  <br/>
-  <div class="ui checkbox">
-
-    <label>Date on/off:</label><input type="checkbox" class="hidden" readonly="" tabindex="0" onClick={() => this.swapDateState()}/>
-  </div>
-            <div class="ui checkbox">
-
-              <label>English filter on/off:</label><input type="checkbox" class="hidden" readonly="" tabindex="0" onClick={() => this.changeFilter()}/>
+        return (
+          <div className="container">
+            <h2 classname="heading">News Search App</h2>
+            <button class="direction-button" onClick={() => this.changePage(0)}> Previous 10 Results </button>
+            <button class="direction-button" onClick={() => this.changePage(1)}> Next 10 Results </button>
+            <div class="page-display">
+              Page: {(offset / 10) + 1}
             </div>
-          </div>
-          <br />
-          <label className="search-label" htmlFor="search-input">
-            <input type="text" value={query} id="search-input" placeholder={"Search..."} onChange={(e) => this.handleOnInputChange(e)}/>
-            <i className="fa fa-search search-icon" />
-            {message}
-          </label>
-          { this.renderSearchResults() }
-        </div>
-      );
-    }
-  }
+            <div class="search-options-container">
+              <br />
 
-  // Use the ReactDOM.render to show your component on the browser
-  ReactDOM.render(
-    <SearchApp />,
-    rootElement
-  )
-</script>
+              <select id="month_start"
+                name="month_start" onChange={() => this.getMonth()}>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select id="day_start"
+                name="day_start" onChange={() => this.getDay()}>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+              <select id="year_start"
+                name="year_start" onChange={() => this.getYear()}>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+              </select>
+              <br />
+              <div class="ui checkbox">
+
+                <label>Date on/off:</label><input type="checkbox" class="hidden" readonly="" tabindex="0" onClick={() => this.swapDateState()} />
+              </div>
+              <div class="ui checkbox">
+
+                <label>English filter on/off:</label><input type="checkbox" class="hidden" readonly="" tabindex="0" onClick={() => this.changeFilter()} />
+              </div>
+            </div>
+            <br />
+            <label className="search-label" htmlFor="search-input">
+              <input type="text" value={query} id="search-input" placeholder={"Search..."} onChange={(e) => this.handleOnInputChange(e)} />
+              <i className="fa fa-search search-icon" />
+              {message}
+            </label>
+            {this.renderSearchResults()}
+          </div>
+        );
+      }
+    }
+
+    // Use the ReactDOM.render to show your component on the browser
+    ReactDOM.render(
+      <SearchApp />,
+      rootElement
+    )
+  </script>
 
 </body>
 
