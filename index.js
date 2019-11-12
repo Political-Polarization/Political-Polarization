@@ -113,8 +113,8 @@ function createHtmlString(obj)
     htmlString += `<div class="article-title"><h4>${obj.news_org}: ${obj.title}</h4></div>`;
 
     htmlString += `<div class="article-info">`
+    htmlString += `<div class="article-url"><a href=${obj.url} target="_blank">${obj.url}</a></div>`;
     htmlString += `<div class="article-bias">Bias Score: ${obj.bias}</div>`;
-    htmlString += `<div class="article-url"><a href=${obj.url} target="_blank">See More</a></div>`;
     htmlString += `</div>` // closes article-info
 
     htmlString += `</div>`; // closes article-container
