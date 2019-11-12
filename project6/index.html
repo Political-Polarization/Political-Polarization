@@ -98,6 +98,8 @@
     crossorigin="anonymous"></script>
   <script type="text/babel">
     // Obtain the root
+    import news_articles from './news_articles.json'
+
     const rootElement = document.getElementById('root')
 
     class SearchApp extends React.Component { // gonna try to modify this tutorial: https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756
@@ -164,6 +166,11 @@
             const totalResults = data.total_results;
             this.setState({ results: data.articles, message: isResult, loading: false, offset: updatedOffset, total_results: totalResults, language_filter: filter, date_on: dateOn, month: Month, day: Day, year: Year, });
           });
+      }
+
+      renderFilterResults() {
+        const {filters} = this.state;
+        console.log(news_articles);
       }
 
       renderSearchResults() {
@@ -316,7 +323,7 @@
         const { month } = this.state;
         const { day } = this.state;
         const { year } = this.state;
-
+        this.renderFilterResults();
 
         return (
           <div className="container">
