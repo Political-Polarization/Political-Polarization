@@ -1,0 +1,25 @@
+* {
+    color: white;
+    text-shadow: -0.08em 0.08em black;
+    text-overflow: wrap;
+    margin: 0px;
+}
+
+body {
+    background-color: #0045A0;
+}
+
+.filter-boxes {
+    margin: 10px;
+    text-align: center;
+}
+
+.article-container {
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.1em inset black;
+}
+
+.article-title {
+    font-size: 20px;
+}
