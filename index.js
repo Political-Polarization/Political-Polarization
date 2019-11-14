@@ -126,7 +126,7 @@ function populateNews() {
 function createHtmlString(obj)
 {
     htmlString = "";
-    htmlString += `<div class="article-container"><a class="article-url" href=${obj.url} target="_blank">`;
+    htmlString += `<a class="article-url" href=${obj.url} target="_blank"><div class="article-container">`;
 
     htmlString += `<div class="article-title"><h4>${obj.news_org}: ${obj.title}</h4></div>`;
 
@@ -136,7 +136,7 @@ function createHtmlString(obj)
     htmlString += `<div class="article-bias">Bias Score: ${obj.bias}</div>`;
     htmlString += `</div>` // closes article-info
 
-    htmlString += `</a></div>`; // closes article-container
+    htmlString += `</div></a>`; // closes article-container
     return htmlString
 }
 
