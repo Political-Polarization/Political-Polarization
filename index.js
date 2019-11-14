@@ -90,7 +90,7 @@ for (var key in data)
     all_filters.push(key);
 }
 
-var filters_to_display = new Set(all_filters);
+var filters_to_display = new Set();
 
 function init() {
     populateNews();
@@ -100,16 +100,25 @@ function populateNews() {
     var articlesContainer = document.getElementById("articles");
     articlesContainer.innerHTML = "";
     var htmlString = "";
-    for (var key in data)
-    {
-        if (filters_to_display.has(key))
+    if (filters_to_display.size) {
+        for (var key in data)
         {
-            for (var i = 0; i < data[key].length; i++) {
-                htmlString += createHtmlString(data[key][i]);        
+            if (filters_to_display.has(key))
+            {
+                for (var i = 0; i < data[key].length; i++) {
+                    htmlString += createHtmlString(data[key][i]);
+                }
             }
         }
     }
-
+    else { //no filters == all filters
+        for (var key in data)
+        {
+            for (var i = 0; i < data[key].length; i++) {
+                htmlString += createHtmlString(data[key][i]);
+            }
+        }
+    }
 
     articlesContainer.innerHTML = htmlString;
 }
