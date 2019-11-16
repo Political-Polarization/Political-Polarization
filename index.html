@@ -14,29 +14,25 @@
 </head>
 
 <body>
-    <div class="header-box">
+    <header role="banner" aria-labelledby="title" class="header-box">
         <h1 id="title" class="mdl-typography--display-3">Your News Feed</h1>
-    </div>
-    <div class="filter-boxes-cont">
+    </header>
+    <nav role="navigation" class="filter-boxes-cont">
         <div class="filter-boxes">
             <p id="filters-title">Filters</p>
-            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" for="breaking-news-filter">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="breaking-news-filter" for="breaking-news-filter">
                 <input type="checkbox" id="breaking-news-filter" class="mdl-switch__input">
                 <span class="mdl-switch__label">Breaking News</span>
             </label>
-            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" for="political-filter">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="political-filter" for="political-filter">
                 <input type="checkbox" id="political-filter" class="mdl-switch__input">
                 <span class="mdl-switch__label">Political</span>
             </label>
         </div>
-    </div>
+    </nav>
+    <main role="main" id="articles">
 
-
-
-
-    <div id="articles">
-
-    </div>
+    </main>
 </body>
 
 </html>
