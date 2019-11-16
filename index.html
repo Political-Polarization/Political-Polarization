@@ -10,14 +10,25 @@
 </head>
 
 <body>
-    <h1 id="title">Your News Feed</h1>
-    <div class="filter-boxes">
-        <label><input type="checkbox" id="breaking-news-filter" />Breaking News</label>
-        <label><input type="checkbox" id="political-filter" />Political</label>
-    </div>
-    <div id="articles">
-
-    </div>
+    <header role="banner" aria-labelledby="title">
+        <h1 id="title">Your News Feed</h1>
+    </header>
+    <nav role="navigation" aria-label="Filter Selection">
+        <div class="filter-boxes">
+            <label aria-labelledby="breaking-news-filter">
+                <input type="checkbox" id="breaking-news-filter" />
+                Breaking News
+            </label>
+            <label aria-labelledby="political-filter">
+                <input type="checkbox" id="political-filter" />
+                Political
+            </label>
+        </div>
+    </nav>
+    <main role="main">
+        <div id="articles">
+        </div>
+    </main>
 </body>
 
 </html>
