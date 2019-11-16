@@ -18,14 +18,13 @@ body {
     border-bottom: 0.1em inset black;
 }
 
-.article-url a {
+/*
+ *TODO: article-url is hugging the text. It should span from border to border.
+ */
 
+.article-url {
+    text-decoration: none; color:black;
 }
-
-.article-url a:visited { text-decoration: none; color:black; }
-.article-url a:hover { text-decoration: none; color:blue; }
-.article-url a:focus { color:black; }
-.article-url a:hover, a:active { text-decoration: none; color:black }
 
 .article-title h4 {
     font-size: 20px;
