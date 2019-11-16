@@ -5,29 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Political Polarization</title>
-    <link rel="stylesheet" type="text/css" href="feed.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="feed.css" />
     <script src="index.js"></script>
 </head>
 
 <body>
-    <header role="banner" aria-labelledby="title">
-        <h1 id="title">Your News Feed</h1>
+    <header role="banner" aria-labelledby="title" class="header-box">
+        <h1 id="title" class="mdl-typography--display-3">Your News Feed</h1>
     </header>
-    <nav role="navigation" aria-label="Filter Selection">
+    <nav role="navigation" class="filter-boxes-cont">
         <div class="filter-boxes">
-            <label aria-labelledby="breaking-news-filter">
-                <input type="checkbox" id="breaking-news-filter" />
-                Breaking News
+            <p id="filters-title">Filters</p>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="breaking-news-filter" for="breaking-news-filter">
+                <input type="checkbox" id="breaking-news-filter" class="mdl-switch__input">
+                <span class="mdl-switch__label">Breaking News</span>
             </label>
-            <label aria-labelledby="political-filter">
-                <input type="checkbox" id="political-filter" />
-                Political
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="political-filter" for="political-filter">
+                <input type="checkbox" id="political-filter" class="mdl-switch__input">
+                <span class="mdl-switch__label">Political</span>
             </label>
         </div>
     </nav>
-    <main role="main">
-        <div id="articles">
-        </div>
+    <main role="main" id="articles">
+
     </main>
 </body>
 

@@ -6,7 +6,8 @@ var data = {
             "author": "Brooke Singman",
             "bias": 5,
             "news_org": "Fox News",
-            "keyword": "Political"
+            "keyword": "Political",
+            "img": "fox-news-logo.jpg"
         },
         {
             "url": "https://thehill.com/regulation/court-battles/470075-supreme-court-sharply-divided-over-trumps-daca-repeal",
@@ -14,7 +15,8 @@ var data = {
             "author": "John Kruzel",
             "bias": 4,
             "news_org": "The Hill",
-            "keyword": "Political"
+            "keyword": "Political",
+            "img": "the-hill-logo.png"
         },
         {
             "url": "https://www.cnn.com/2019/11/12/politics/house-republicans-trump-memo-impeachment-defense/index.html",
@@ -22,7 +24,8 @@ var data = {
             "author": "Phil Mattingly, Manu Raju, Veronica Stracqualursi",
             "bias": 1,
             "news_org": "CNN",
-            "keyword": "Political"
+            "keyword": "Political",
+            "img": "cnn-logo.png"
         },
         {
             "url": "https://www.cnbc.com/2019/11/12/watch-trump-speaks-at-the-economic-club-of-new-york.html",
@@ -30,7 +33,8 @@ var data = {
             "author": "Kevin Breuninger",
             "bias": 3,
             "news_org": "CNBC",
-            "keyword": "Political"
+            "keyword": "Political",
+            "img": "cnbc-logo.png"
         },
     ],
     "Breaking News": [
@@ -39,7 +43,8 @@ var data = {
             "title": "San Diego State cites possible fraternity 'misconduct' after freshman's death",
             "bias": 5,
             "news_org": "CBS News",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "cbs-logo.jpg"
         },
         {
             "url": "https://www.thedailybeast.com/stephen-miller-pushed-racist-stories-to-breitbart-leaked-emails-show",
@@ -47,7 +52,8 @@ var data = {
             "author": "Danika Fears",
             "bias": 2,
             "news_org": "Daily Beast",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "news.jpeg"
         },
         {
             "url": "https://www.nbcnews.com/politics/donald-trump/private-speech-bolton-suggests-some-trump-s-foreign-policy-decisions-n1080651",
@@ -55,7 +61,8 @@ var data = {
             "author": "Stephanie Ruhle, Carol E. Lee",
             "bias": 5,
             "news_org": "NBC News",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "news.jpeg"
         },
         {
             "url": "https://www.wsj.com/articles/google-s-secret-project-nightingale-gathers-personal-health-data-on-millions-of-americans-11573496790",
@@ -63,7 +70,8 @@ var data = {
             "author": "Rob Copeland",
             "bias": 1,
             "news_org": "Wall Street Journal",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "wsj-logo.jpg"
         },
         {
             "url": "https://www.inc.com/chris-matyszczyk/united-airlines-just-made-an-extraordinary-maddening-statement-about-fees-it-may-make-passengers-truly-angry.html",
@@ -71,7 +79,8 @@ var data = {
             "author": "Chris Matyszczyk",
             "bias": 6,
             "news_org": "Inc",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "news.jpeg"
         },
         {
             "url": "https://www.npr.org/2019/11/12/778530312/mcdonalds-is-sued-over-systemic-sexual-harassment-of-female-workers",
@@ -79,14 +88,14 @@ var data = {
             "author": "Alina Selyukh",
             "bias": 10,
             "news_org": "NPR",
-            "keyword": "Breaking News"
+            "keyword": "Breaking News",
+            "img": "news.jpeg"
         }
     ]
 }
 
 var all_filters = []
-for (var key in data)
-{
+for (var key in data) {
     all_filters.push(key);
 }
 
@@ -101,10 +110,8 @@ function populateNews() {
     articlesContainer.innerHTML = "";
     var htmlString = "";
     if (filters_to_display.size) {
-        for (var key in data)
-        {
-            if (filters_to_display.has(key))
-            {
+        for (var key in data) {
+            if (filters_to_display.has(key)) {
                 for (var i = 0; i < data[key].length; i++) {
                     htmlString += createHtmlString(data[key][i]);
                 }
@@ -112,10 +119,18 @@ function populateNews() {
         }
     }
     else { //no filters == all filters
-        for (var key in data)
-        {
+        for (var key in data) {
             for (var i = 0; i < data[key].length; i++) {
+                if (i % 2 == 0) {
+                    htmlString += '<div class="article-row">';
+                }
                 htmlString += createHtmlString(data[key][i]);
+                if (i % 2 == 1) {
+                    htmlString += '</div>';
+                }
+            }
+            if (data[key].length % 2 == 0) {
+                htmlString += '</div>';
             }
         }
     }
@@ -123,21 +138,35 @@ function populateNews() {
     articlesContainer.innerHTML = htmlString;
 }
 
-function createHtmlString(obj)
-{
-    htmlString = "";
-    htmlString += `<a class="article-url" href=${obj.url} target="_blank"><article><div class="article-container">`;
+function createHtmlString(obj) {
+    htmlString = `
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title" style="background:url('imgs/newslogos/${obj.img}') center / cover">
+            <h2 class="mdl-card__title-text"></h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div>
+                <p class="mdl-typography--title article-title">${obj.title}</p>
+            </div>
+            <div class="article-info">
+                <div>
+                    <p class="article-news-org">${obj.author ? (obj.author + ", ") : ""}${obj.news_org}</p>
+                </div>
+                <div>
+                    <p class="article-bias">Bias Score: ${obj.bias}</p>
+                </div>
+            </div>
 
-    htmlString += `<div class="article-title"><h2>${obj.news_org}: ${obj.title}</h2></div>`;
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a href=${obj.url} target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Open Externally
+            </a>
+        </div>
+    </div>
+    `;
 
-    htmlString += `<div class="article-info">`
-    if (obj.author) //checks if article has an author
-        htmlString += `<div class="article-author"><p>By ${obj.author}</p></div>`;
-    htmlString += `<div class="article-bias"><p>Bias Score: ${obj.bias}</p></div>`;
-    htmlString += `</div>` // closes article-info
-
-    htmlString += `</div></article></a>`; // closes article-container
-    return htmlString
+    return htmlString;
 }
 
 
@@ -145,11 +174,11 @@ function createHtmlString(obj)
 
 document.addEventListener("DOMContentLoaded", function (event) {
     init();
-    document.getElementById("breaking-news-filter").onclick = function() {
+    document.getElementById("breaking-news-filter").onclick = function () {
         if (this.checked) {
             filters_to_display.add("Breaking News");
         }
-    
+
         else {
             filters_to_display.delete("Breaking News");
         }
@@ -157,11 +186,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         populateNews();
     };
 
-    document.getElementById("political-filter").onclick = function() {
+    document.getElementById("political-filter").onclick = function () {
         if (this.checked) {
             filters_to_display.add("Political");
         }
-    
+
         else {
             filters_to_display.delete("Political");
         }

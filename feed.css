@@ -1,10 +1,29 @@
 #title {
     text-align: center;
+    margin: 0;
+    color: white;
+}
+
+.header-box {
+    width: 100%;
+    background-color: rgb(103,58,183);
+    padding: 15px 0px;
 }
 
 body {
     background-color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#articles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-boxes-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 p {
@@ -13,7 +32,20 @@ p {
 
 .filter-boxes {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#filters-title {
+    margin: 5px 0px;;
+    font-size: 24px;
     text-align: center;
+    font-weight: bold;
+}
+
+.filters-toggle {
+    margin: 5px;
 }
 
 .article-container {
@@ -22,17 +54,36 @@ p {
     border-bottom: 0.1em inset black;
 }
 
-/*
- *TODO: article-url is hugging the text. It should span from border to border.
- */
-
-.article-url {
-    text-decoration: none; color:black;
+.article-row {
+    display: flex;
+    flex-direction: row;
 }
 
-.article-title h2 {
-    font-size: 20px;
-    color: #0045A0;
-    margin-bottom: 0px;
-
+.article-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.article-news-org {
+    margin: 0;
+}
+
+.article-bias {
+    margin: 0;
+}
+
+
+.demo-card-wide.mdl-card {
+    width: 512px;
+    margin: 20px;
+  }
+
+  .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+  }
+
+  .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+  }
