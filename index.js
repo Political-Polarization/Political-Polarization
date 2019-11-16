@@ -140,29 +140,25 @@ function populateNews() {
 
 function createHtmlString(obj) {
     htmlString = `
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title" style="background:url('imgs/newslogos/${obj.img}') center / cover">
-            <h2 class="mdl-card__title-text"></h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-            <div>
-                <a href=${obj.url} target="_blank" class="mdl-typography--title article-title">${obj.title}</a>
+    <a href=${obj.url} target="_blank">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title" style="background:url('imgs/newslogos/${obj.img}') center / cover">
             </div>
-            <div class="article-info">
-                <div>
-                    <p class="article-news-org">${obj.author ? (obj.author + ", ") : ""}${obj.news_org}</p>
+            <div class="mdl-card__supporting-text">
+                <div class="mdl-typography--title">
+                    ${obj.title}
                 </div>
-                <div>
-                    <p class="article-bias">Bias Score: ${obj.bias}</p>
+                <div class="article-info">
+                    <div>
+                        <p class="article-news-org">${obj.author ? (obj.author + ", ") : ""}${obj.news_org}</p>
+                    </div>
+                    <div>
+                        <p class="article-bias">Bias Score: ${obj.bias}</p>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <a href=${obj.url} target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Open Externally
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
     `;
 
