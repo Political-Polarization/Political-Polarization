@@ -146,7 +146,7 @@ function createHtmlString(obj) {
         </div>
         <div class="mdl-card__supporting-text">
             <div>
-                <p class="mdl-typography--title article-title">${obj.title}</p>
+                <a href=${obj.url} target="_blank" class="mdl-typography--title article-title">${obj.title}</a>
             </div>
             <div class="article-info">
                 <div>
