@@ -142,7 +142,7 @@ function createHtmlString(obj) {
     htmlString = `
     <a href=${obj.url} target="_blank">
         <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title" style="background:url('imgs/newslogos/${obj.img}') center / cover">
+            <div class="mdl-card__title" style="background:url('imgs/newslogos/${obj.img}') center / cover" alt="${obj.news_org}">
             </div>
             <div class="mdl-card__supporting-text">
                 <div class="mdl-typography--title">
