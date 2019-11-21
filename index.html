@@ -17,16 +17,34 @@
     <header role="banner" aria-labelledby="title" class="header-box">
         <h1 id="title" class="mdl-typography--display-3">Your News Feed</h1>
     </header>
+    <div class="search-bar">
+        <form class="search-container" onSubmit="return false;">
+            <input type="text" id="search-bar" placeholder="Press enter to search for terms...">
+            
+        </form>
+    </div>
     <nav role="navigation" class="filter-boxes-cont">
         <div class="filter-boxes">
             <p id="filters-title">Filters</p>
             <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="breaking-news-filter" for="breaking-news-filter">
-                <input type="checkbox" id="breaking-news-filter" class="mdl-switch__input">
+                <input type="checkbox" id="breaking-news-filter" value="Breaking News" class="mdl-switch__input">
                 <span class="mdl-switch__label">Breaking News</span>
             </label>
             <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="political-filter" for="political-filter">
-                <input type="checkbox" id="political-filter" class="mdl-switch__input">
+                <input type="checkbox" id="political-filter" value="Political" class="mdl-switch__input">
                 <span class="mdl-switch__label">Political</span>
+            </label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="domestic-filter" for="domestic-filter">
+                <input type="checkbox" id="domestic-filter" value="Domestic" class="mdl-switch__input">
+                <span class="mdl-switch__label">Domestic</span>
+            </label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="international-filter" for="international-filter">
+                <input type="checkbox" id="international-filter" value="International" tag="filter" class="mdl-switch__input">
+                <span class="mdl-switch__label">International</span>
+            </label>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect filters-toggle" aria-labelledby="economic-filter" for="economic-filter">
+                <input type="checkbox" id="economic-filter" value="Economic" class="mdl-switch__input">
+                <span class="mdl-switch__label">Economic</span>
             </label>
         </div>
     </nav>
