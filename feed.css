@@ -24,6 +24,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 10px;
+}
+
+.filter-bar {
+    flex-direction: column;
+    display: flex;
 }
 
 p {
@@ -35,18 +41,22 @@ a {
 }
 
 .filter-boxes {
-    margin: 10px;
+    margin: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
 }
 
 #filters-title {
-    margin: 5px 0px;;
+    margin: 2px 0px;;
     font-size: 24px;
     text-align: center;
     font-weight: bold;
     float: left;
+}
+
+.filter-cont {
+    margin: auto 15px;
 }
 
 .filters-toggle {
