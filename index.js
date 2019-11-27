@@ -224,6 +224,8 @@ function init() {
     document.getElementById("sliderRange").value = 0;   
     populateNews(data);
     document.getElementById("sliderRange").value = 50;
+    makePlot(data);
+
 }
 
 var filters_to_display = new Set();
@@ -231,6 +233,49 @@ var filters_to_display = new Set();
 var search_terms = new Set();
 
 var max_bias_allowed = [0, 10];
+
+function makePlot(articles) {
+    var articleamounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    console.log(articleamounts);
+
+    for (i = 0; i < articles.length; i++) {
+        var biasnum = articles[i]["bias"];
+        console.log(biasnum);
+        articleamounts[biasnum] = articleamounts[biasnum]+1;
+        console.log(articleamounts);
+    }
+    
+    var trace1 = {
+        x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        y: [articleamounts[0], articleamounts[1], articleamounts[2], articleamounts[3], articleamounts[4], articleamounts[5], articleamounts[6], articleamounts[7], articleamounts[8], articleamounts[9], articleamounts[10]],
+        mode: 'markers',
+        type: 'scatter'
+      };
+    
+    var layout = {
+        margin: {
+          l: 20,
+          r: 20,
+          b: 20,
+          t: 20,
+          pad: 5
+        }, title: false,
+        xaxis: {
+            tick0: 0,
+            dtick: 1,
+            autotick: false
+        },
+        yaxis: {
+            tick0: 0,
+            dtick: 1,
+            autotick: false
+        }
+      };
+
+    var toplot = [trace1];
+
+    Plotly.newPlot('plot', toplot, layout);
+}
 
 function updateShownArticles() {
     var articlesToDisplay = [];
@@ -260,6 +305,7 @@ function updateShownArticles() {
     }
 
     populateNews(articlesToDisplay);
+    makePlot(articlesToDisplay);
 
 }
 
