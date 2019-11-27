@@ -134,3 +134,33 @@ a {
     right: -45px;
   }
 
+  .rangeslider{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    }
+
+  #instruction-text {
+      text-align: center;
+  }
+
+  .myslider {
+        -webkit-appearance: none;
+        background: #FCF3CF  ;
+        width: 50%;
+        height: 20px;
+        opacity: 2;
+    }
+
+  .myslider:hover {
+        opacity: 1;
+   }
+
+   .myslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: #34495E  ;
+    width: 5%;
+    height: 20px;
+}
