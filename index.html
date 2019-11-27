@@ -66,11 +66,16 @@
                 </div>
             </div>
             <div id="instruction-text">Set the strength of the bias filter:</div>
-            <div class="rangeslider"> 
-                Weak
-            <input type="range" min="0" max="100" value="0" class="myslider" id="sliderRange" /> 
-            Strong
-            </div> 
+            <div class="rangeslider">
+                <p class="rangelabel">
+                    Weak
+                </p>
+                <input type="range" min="0" max="100" value="50" class="mdl-slider mdl-js-slider myslider"
+                    id="sliderRange" />
+                <p class="rangelabel">
+                    Strong
+                </p>
+            </div>
         </div>
     </nav>
     <main role="main" id="articles">
