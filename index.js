@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     };
 
     document.getElementById("sliderRange").onchange = function () {
-        max_bias_allowed = 10 - document.getElementById("sliderRange").value;
+        max_bias_allowed = 10 - (document.getElementById("sliderRange").value / 10);
         updateShownArticles();
     }
 
