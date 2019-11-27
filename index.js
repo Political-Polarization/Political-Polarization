@@ -223,18 +223,19 @@ function init() {
     document.getElementById("search-bar").value = "";
     document.getElementById("sliderRange").value = 0;   
     populateNews(data);
+    document.getElementById("sliderRange").value = 50;
 }
 
 var filters_to_display = new Set();
 
 var search_terms = new Set();
 
-var max_bias_allowed = 10;
+var max_bias_allowed = [0, 10];
 
 function updateShownArticles() {
     var articlesToDisplay = [];
     for (i = 0; i < data.length; i++) {
-        if (data[i]["bias"] > max_bias_allowed) continue;
+        if (!(data[i]["bias"] >= max_bias_allowed[0] && data[i]["bias"] <= max_bias_allowed[1])) continue;
         var textmod = (data[i]["text"].toLowerCase());
         var articlewords = new Set(textmod.split(" "));
         var intersect_words = new Set();
@@ -385,7 +386,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     };
 
     document.getElementById("sliderRange").onchange = function () {
-        max_bias_allowed = 10 - (document.getElementById("sliderRange").value / 10);
+        var sliderVal = document.getElementById("sliderRange").value / 10;
+        if (sliderVal >= 4.5 && sliderVal <= 5.5) {
+            max_bias_allowed = [0, 10]
+        } else if (sliderVal < 4.5) {
+            max_bias_allowed = [0, sliderVal]
+        } else {
+            max_bias_allowed = [sliderVal, 10]
+        }
         updateShownArticles();
     }
 
