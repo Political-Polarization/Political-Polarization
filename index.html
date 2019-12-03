@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" type="text/css" href="feed.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="index.js"></script>
 </head>
 
@@ -65,9 +66,24 @@
                     </label>
                 </div>
             </div>
-
+            <div id="instruction-text">Set the strength of the bias filter:</div>
+            <div class="rangeslider">
+                <p class="rangelabel">
+                    Weak
+                </p>
+                <input type="range" min="0" max="100" value="50" class="mdl-slider mdl-js-slider myslider"
+                    id="sliderRange" />
+                <p class="rangelabel">
+                    Strong
+                </p>
+            </div>
+    
+    <div><p>Bias Levels over All Articles Shown:</p></div>
+    <div id="plot"></div>
+            
         </div>
     </nav>
+    
     <main role="main" id="articles">
 
     </main>

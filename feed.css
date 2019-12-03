@@ -134,3 +134,38 @@ a {
     right: -45px;
   }
 
+  .rangeslider{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+  #instruction-text {
+      text-align: center;
+  }
+
+  .myslider {
+      width: 100%;
+    }
+
+  .myslider:hover {
+        opacity: 1;
+   }
+
+   .mdl-slider__container {
+       width: 100%;
+   }
+
+   .rangelabel {
+       margin: 0px;
+   }
+
+   #plot {
+       width: 600px;
+       height: 270px;
+       margin-left: 80px;
+       display: flex;
+       text-align: center;
+   }
