@@ -232,7 +232,9 @@ var filters_to_display = new Set();
 
 var search_terms = new Set();
 
-var max_bias_allowed = [0, 10];
+var bias_width = 2.5;
+
+var max_bias_allowed = [5 - bias_width, 5 + bias_width];
 
 function makePlot(articles) {
     var articleamounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -433,13 +435,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("sliderRange").onchange = function () {
         var sliderVal = document.getElementById("sliderRange").value / 10;
-        if (sliderVal >= 4.5 && sliderVal <= 5.5) {
-            max_bias_allowed = [0, 10]
-        } else if (sliderVal < 4.5) {
-            max_bias_allowed = [0, sliderVal]
-        } else {
-            max_bias_allowed = [sliderVal, 10]
-        }
+//         if (sliderVal >= 4.5 && sliderVal <= 5.5) {
+//             max_bias_allowed = [0, 10]
+//         } else if (sliderVal < 4.5) {
+//             max_bias_allowed = [0, sliderVal]
+//         } else {
+//             max_bias_allowed = [sliderVal, 10]
+//         }
+		max_bias_allowed = [sliderVal - bias_width, sliderVal + bias_width];
         updateShownArticles();
     }
 
