@@ -225,7 +225,7 @@ function init() {
     populateNews(data);
     document.getElementById("sliderRange").value = 50;
     makePlot(data);
-
+	updateShownArticles();
 }
 
 var filters_to_display = new Set();
@@ -435,13 +435,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("sliderRange").onchange = function () {
         var sliderVal = document.getElementById("sliderRange").value / 10;
-//         if (sliderVal >= 4.5 && sliderVal <= 5.5) {
-//             max_bias_allowed = [0, 10]
-//         } else if (sliderVal < 4.5) {
-//             max_bias_allowed = [0, sliderVal]
-//         } else {
-//             max_bias_allowed = [sliderVal, 10]
-//         }
 		max_bias_allowed = [sliderVal - bias_width, sliderVal + bias_width];
         updateShownArticles();
     }
