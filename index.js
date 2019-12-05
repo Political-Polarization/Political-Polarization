@@ -238,13 +238,13 @@ var max_bias_allowed = [5 - bias_width, 5 + bias_width];
 
 function makePlot(articles) {
     var articleamounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    console.log(articleamounts);
+//     console.log(articleamounts);
 
     for (i = 0; i < articles.length; i++) {
         var biasnum = articles[i]["bias"];
-        console.log(biasnum);
+//         console.log(biasnum);
         articleamounts[biasnum] = articleamounts[biasnum]+1;
-        console.log(articleamounts);
+//         console.log(articleamounts);
     }
     
     var trace1 = {
@@ -280,6 +280,7 @@ function makePlot(articles) {
 }
 
 function updateShownArticles() {
+// 	console.log(filters_to_display);
     var articlesToDisplay = [];
     for (i = 0; i < data.length; i++) {
         if (!(data[i]["bias"] >= max_bias_allowed[0] && data[i]["bias"] <= max_bias_allowed[1])) continue;
@@ -305,10 +306,10 @@ function updateShownArticles() {
             }
         }
     }
-
+    console.log(articlesToDisplay.length);
+    
     populateNews(articlesToDisplay);
     makePlot(articlesToDisplay);
-
 }
 
 function populateNews(articles) {
@@ -365,6 +366,7 @@ function createHtmlString(obj) {
 
 function searchChange(string) {
     search_terms = new Set(string.split(" "));
+	search_terms.delete("");
     updateShownArticles();
 }
 
@@ -379,7 +381,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         else {
             filters_to_display.delete(this.value);
         }
-        console.log(filters_to_display);
 
         updateShownArticles();
     }
@@ -391,7 +392,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         else {
             filters_to_display.delete(this.value);
         }
-        console.log(filters_to_display);
 
         updateShownArticles();
     }
@@ -403,7 +403,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         else {
             filters_to_display.delete(this.value);
         }
-        console.log(filters_to_display);
 
         updateShownArticles();
     }
@@ -415,7 +414,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         else {
             filters_to_display.delete(this.value);
         }
-        console.log(filters_to_display);
 
         updateShownArticles();
     }
