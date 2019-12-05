@@ -220,7 +220,7 @@ var data = [{
 ];
 
 var primaryColor;
-var secondaryColor;
+var secondaryColor = "#448aff";
 
 function init() {
     document.getElementById("search-bar").value = "";
@@ -229,7 +229,6 @@ function init() {
     document.getElementById("sliderRange").value = 50;
     
     primaryColor = window.getComputedStyle(document.getElementsByClassName("header-box")[0]).backgroundColor;
-    secondaryColor = window.getComputedStyle(document.getElementsByClassName("article-title")[0]).color;
     
     filterChange(document.getElementById("breaking-news-filter"));
     filterChange(document.getElementById("political-filter"));
@@ -357,7 +356,7 @@ function createHtmlString(obj) {
             	<h2 class="mdl-card__title-text"></h2>
         	</div>
         	<div class="mdl-card__supporting-text">
-            	<div class="mdl-typography--title article-title">
+            	<div class="mdl-typography--title article-title" style="color: ${secondaryColor}">
                 	${obj.title}
             	</div>
             	<div class="article-info">
