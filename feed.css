@@ -80,6 +80,10 @@ a {
     justify-content: space-between;
 }
 
+.article-title {
+	color: #448aff;
+}
+
 .article-news-org {
     margin: 0;
 }
