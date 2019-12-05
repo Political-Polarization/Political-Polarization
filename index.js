@@ -224,6 +224,13 @@ function init() {
     document.getElementById("sliderRange").value = 0;   
     populateNews(data);
     document.getElementById("sliderRange").value = 50;
+    
+    filterChange(document.getElementById("breaking-news-filter"));
+    filterChange(document.getElementById("political-filter"));
+    filterChange(document.getElementById("domestic-filter"));
+    filterChange(document.getElementById("international-filter"));
+    filterChange(document.getElementById("economic-filter"));
+    
     makePlot(data);
 	updateShownArticles();
 }
@@ -280,7 +287,6 @@ function makePlot(articles) {
 }
 
 function updateShownArticles() {
-// 	console.log(filters_to_display);
     var articlesToDisplay = [];
     for (i = 0; i < data.length; i++) {
         if (!(data[i]["bias"] >= max_bias_allowed[0] && data[i]["bias"] <= max_bias_allowed[1])) continue;
@@ -306,7 +312,6 @@ function updateShownArticles() {
             }
         }
     }
-    console.log(articlesToDisplay.length);
     
     populateNews(articlesToDisplay);
     makePlot(articlesToDisplay);
@@ -370,63 +375,38 @@ function searchChange(string) {
     updateShownArticles();
 }
 
+function filterChange(element) {
+	if (element.checked)
+		filters_to_display.add(element.value);
+	else
+		filters_to_display.delete(element.value);
+	
+	updateShownArticles();
+}
+
+
 document.addEventListener("DOMContentLoaded", function (event) {
     init();
 
-    
-    document.getElementById("breaking-news-filter").onclick = function () {
-        if (this.checked) {
-            filters_to_display.add(this.value);
-        }
-        else {
-            filters_to_display.delete(this.value);
-        }
 
-        updateShownArticles();
+    document.getElementById("breaking-news-filter").onclick = function () {
+    	filterChange(this);
     }
 
     document.getElementById("political-filter").onclick = function () {
-        if (this.checked) {
-            filters_to_display.add(this.value);
-        }
-        else {
-            filters_to_display.delete(this.value);
-        }
-
-        updateShownArticles();
+    	filterChange(this);
     }
     
     document.getElementById("domestic-filter").onclick = function () {
-        if (this.checked) {
-            filters_to_display.add(this.value);
-        }
-        else {
-            filters_to_display.delete(this.value);
-        }
-
-        updateShownArticles();
+        filterChange(this);
     }
 
     document.getElementById("international-filter").onclick = function () {
-        if (this.checked) {
-            filters_to_display.add(this.value);
-        }
-        else {
-            filters_to_display.delete(this.value);
-        }
-
-        updateShownArticles();
+        filterChange(this);
     }
 
     document.getElementById("economic-filter").onclick = function () {
-        if (this.checked) {
-            filters_to_display.add(this.value);
-        }
-        else {
-            filters_to_display.delete(this.value);
-        }
-
-        updateShownArticles();
+        filterChange(this);
     }
 
     document.getElementById("search-bar").onchange = function () {
