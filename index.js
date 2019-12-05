@@ -232,7 +232,7 @@ var filters_to_display = new Set();
 
 var search_terms = new Set();
 
-var bias_width = 2.5;
+var bias_width = 5;
 
 var max_bias_allowed = [5 - bias_width, 5 + bias_width];
 
