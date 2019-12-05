@@ -219,11 +219,17 @@ var data = [{
 },
 ];
 
+var primaryColor;
+var secondaryColor;
+
 function init() {
     document.getElementById("search-bar").value = "";
     document.getElementById("sliderRange").value = 0;   
     populateNews(data);
     document.getElementById("sliderRange").value = 50;
+    
+    primaryColor = window.getComputedStyle(document.getElementsByClassName("header-box")[0]).backgroundColor;
+    secondaryColor = window.getComputedStyle(document.getElementsByClassName("article-title")[0]).color;
     
     filterChange(document.getElementById("breaking-news-filter"));
     filterChange(document.getElementById("political-filter"));
@@ -239,7 +245,7 @@ var filters_to_display = new Set();
 
 var search_terms = new Set();
 
-var bias_width = 5;
+var bias_width = 5.5;
 
 var max_bias_allowed = [5 - bias_width, 5 + bias_width];
 
@@ -258,7 +264,11 @@ function makePlot(articles) {
         x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         y: [articleamounts[0], articleamounts[1], articleamounts[2], articleamounts[3], articleamounts[4], articleamounts[5], articleamounts[6], articleamounts[7], articleamounts[8], articleamounts[9], articleamounts[10]],
         mode: 'markers',
-        type: 'scatter'
+        type: 'scatter',
+        marker: {
+			color: primaryColor,
+        	size: 12
+        }
       };
     
     var layout = {
@@ -283,7 +293,7 @@ function makePlot(articles) {
 
     var toplot = [trace1];
 
-    Plotly.newPlot('plot', toplot, layout);
+    Plotly.newPlot('plot', toplot, layout, {staticPlot: true});
 }
 
 function updateShownArticles() {
