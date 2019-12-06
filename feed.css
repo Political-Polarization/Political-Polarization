@@ -63,12 +63,6 @@ a {
     margin: 5px;
 }
 
-.article-container {
-    margin: 10px;
-    padding-bottom: 10px;
-    border-bottom: 0.1em inset black;
-}
-
 .article-row {
     display: flex;
     flex-direction: row;
