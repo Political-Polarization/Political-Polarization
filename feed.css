@@ -63,12 +63,6 @@ a {
     margin: 5px;
 }
 
-.article-container {
-    margin: 10px;
-    padding-bottom: 10px;
-    border-bottom: 0.1em inset black;
-}
-
 .article-row {
     display: flex;
     flex-direction: row;
@@ -101,9 +95,19 @@ a {
 }
 
 .mdl-card__title {
-    color: #fff;
     height: 176px;
+    border-bottom: solid;
+	border-color: rgb(200, 200, 200);
+	border-width: 1px;
 }
+
+/* 
+.mdl-card__supporting-text {
+	border-top: solid;
+	border-color: black;
+	width: 100%;
+}
+ */
 
 .mdl-card__menu {
     color: #fff;
